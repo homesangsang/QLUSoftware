@@ -1,0 +1,1395 @@
+  <!DOCTYPE html>  
+  <html lang="zh-cn">
+  <head>
+      <meta charset="utf-8">  
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+      <meta name="viewport" content="width=device-width, initial-scale=1">  
+      <title>现代浏览器博物馆</title>
+      <link href="css/bootstrap.min.css" rel="stylesheet">  
+
+      <!--[if lt IE 9]>  
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+      <![endif]-->  
+
+      <style>
+
+        body {
+            padding-top: 50px;
+            padding-bottom: 40px;
+            color: #5a5a5a;
+        }
+
+        /* 轮播广告 */
+
+        .carousel {
+            height: 500px;
+            margin-bottom: 60px;
+        }
+
+        .carousel .item {
+            height: 500px;
+            background-color: #000;
+        }
+
+        .carousel .item img {
+            width: 100%;
+        }
+
+        .carousel-caption {
+            z-index: 10;
+        }
+
+        .carousel-caption p {
+            margin-bottom: 20px;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        /* 简介 */
+
+        .summary {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .summary .col-md-4 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* 特性 */
+
+        .feature-divider {
+            margin: 40px 0;
+        }
+
+        .feature {
+            padding: 30px 0;
+        }
+
+        .feature-heading {
+            font-size: 50px;
+            color: #2a6496;
+        }
+
+        .feature-heading .text-muted {
+            font-size: 28px;
+        }
+
+        /* 响应式布局 */
+
+        @media (max-width: 768px) {
+
+            .summary {
+                padding-right: 3px;
+                padding-left: 3px;
+            }
+
+            .carousel {
+                height: 300px;
+                margin-bottom: 30px;
+            }
+
+            .carousel .item {
+                height: 300px;
+            }
+
+            .carousel img {
+                min-height: 300px;
+            }
+
+            .carousel-caption p {
+                font-size: 16px;
+                line-height: 1.4;
+            }
+
+            .feature-heading {
+                font-size: 34px;
+            }
+
+            .feature-heading .text-muted {
+                font-size: 22px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .feature-heading {
+                margin-top: 120px;
+            }
+        }
+        #tab-signup{
+          display:none;
+        }
+        #authcode{
+            width: 50%;
+            float:left;
+        }
+        #authcode2{
+            width: 50%;
+            float:left;
+        }
+        #authcode4{
+            width: 50%;
+            float:left;
+        }
+        #message{
+            width: 50%;
+            float:left;
+        }
+        #formessage{
+            width: 50%;
+            float:left;
+        }
+        #captcha_img{
+            float: right;
+        }
+        #captcha_img2{
+            float: right;
+        }
+        #captcha_img3{
+            float: right;
+        }
+        #change{
+            float: right
+        }
+        #change2{
+            float: right
+        }
+        #change3{
+            float:right
+        }
+        #error1{
+            display:none;
+        }
+        #error2{
+            display:none;
+        }
+        #error3{
+            display:none;
+        }
+        #error4{
+            display: none;
+         }
+        #error5{
+            display: none;
+         }
+        #error6{
+            display: none;
+         }
+        #error7{
+            display: none;
+         }
+        #error8{
+            display: none;
+         }
+        #error9{
+            display: none;
+         }
+        #error10{
+            display: none;
+         }
+         #error11{
+            display: none;
+         }
+         #error12{
+            display: none;
+         }
+         #error13{
+            display: none;
+         }
+         #error14{
+            display: none;
+         }
+         #error15{
+            display: none;
+         }
+         #error16{
+            display: none;
+         }
+         #error17{
+            display: none;
+         }
+         #error18{
+            display: none;
+         }
+         #error19{
+            display: none;
+         }
+        #error20{
+            display: none;
+         }
+        #error21{
+            display: none;
+         }
+         #error22{
+            display: none;
+         }
+         #error23{
+            display: none;
+         }
+         #error24{
+            display: none;
+         }
+         #error25{
+            display: none;
+         }
+  #signsure{
+            display: none;
+            width: 500px;
+            text-align: center;
+            margin: 0 auto;
+            position: fixed;
+            z-index: 2040;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+     #changesure{
+            display: none;
+            width: 500px;
+            text-align: center;
+            margin: 0 auto;
+            position: fixed;
+            z-index: 2040;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+        #forgetsure{
+            display: none;
+            width: 500px;
+            text-align: center;
+            margin: 0 auto;
+            position: fixed;
+            z-index: 2040;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+</style>
+  </head>
+
+  <body>
+      <div class="alert alert-success" id ="signsure" role="alert">注册成功！</div>
+      <div class="alert alert-success" id ="changesure" role="alert">修改成功请重新登录！</div>
+      <div class="alert alert-success" id ="forgetsure" role="alert">修改成功！</div>
+      <!-- 顶部导航 -->  
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="menu-nav">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="sr-only">切换导航</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">现代浏览器博物馆</a>
+              </div>
+              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                      <li class="active">
+                          <a href="#ad-carousel">综述</a>
+                      </li>
+                      <li>
+                          <a href="#summary-container">简述</a>
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              特点
+                              <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu" role="menu">
+                              <li>
+                                  <a href="#feature-tab" data-tab="tab-chrome">Chrome</a>
+                              </li>
+                              <li>
+                                  <a href="#feature-tab" data-tab="tab-firefox">Firefox</a>
+                              </li>
+                              <li>
+                                  <a href="#feature-tab" data-tab="tab-safari">Safari</a>
+                              </li>
+                              <li>
+                                  <a href="#feature-tab" data-tab="tab-opera">Opera</a>
+                              </li>
+                              <li>
+                                  <a href="#feature-tab" data-tab="tab-ie">IE</a>
+                              </li>
+                          </ul>
+                      </li>
+                      <li>
+                          <a href="#" data-toggle="modal" id="logheader" data-target="#logorsign">登录/注册</a>
+                          <ul class="dropdown-menu" role="menu">
+                              <li>
+                                  <a href="#" data-toggle="modal" data-target="#changed">修改密码</a>
+                              </li>
+                              <li>
+                                  <a href="#" id="logout">退出登录</a>
+                              </li>
+                          </ul>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <!-- 广告轮播 -->  
+      <div id="ad-carousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+              <li data-target="#ad-carousel" data-slide-to="0" class="active"></li>
+              <li data-target="#ad-carousel" data-slide-to="1"></li>
+              <li data-target="#ad-carousel" data-slide-to="2"></li>
+              <li data-target="#ad-carousel" data-slide-to="3"></li>
+              <li data-target="#ad-carousel" data-slide-to="4"></li>
+          </ol>
+          <div class="carousel-inner">
+              <div class="item active">
+                  <img src="images/chrome-big.jpg" alt="1 slide">  
+
+                  <div class="container">
+                      <div class="carousel-caption">
+                          <h1>Chrome</h1>
+
+                          <p>Google Chrome，又称Google浏览器，是一个由Google（谷歌）公司开发的网页浏览器。</p>
+
+                          <p>
+                              <a class="btn btn-lg btn-primary" href="http://www.google.cn/intl/zh-CN/chrome/browser/"
+                          role="button" target="_blank">点我下载</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <div class="item">
+                  <img src="images/firefox-big.jpg" alt="2 slide">  
+
+                  <div class="container">
+                      <div class="carousel-caption">
+                          <h1>Firefox</h1>
+
+                          <p>Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器。</p>
+
+                          <p>
+                              <a class="btn btn-lg btn-primary" href="http://www.firefox.com.cn/download/" target="_blank"
+                          role="button">点我下载</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <div class="item">
+                  <img src="images/safari-big.jpg" alt="3 slide">  
+
+                  <div class="container">
+                      <div class="carousel-caption">
+                          <h1>Safari</h1>
+
+                          <p>Safari，是苹果计算机的最新操作系统Mac OS X中的浏览器。</p>
+
+                          <p>
+                              <a class="btn btn-lg btn-primary" href="http://www.apple.com/cn/safari/" target="_blank"
+                          role="button">点我下载</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <div class="item">
+                  <img src="images/opera-big.jpg" alt="4 slide">  
+
+                  <div class="container">
+                      <div class="carousel-caption">
+                          <h1>Opera</h1>
+
+                          <p>Opera浏览器，是一款挪威Opera Software ASA公司制作的支持多页面标签式浏览的网络浏览器。</p>
+
+                          <p>
+                              <a class="btn btn-lg btn-primary" href="http://www.opera.com/zh-cn" target="_blank"
+                          role="button">点我下载</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <div class="item">
+                  <img src="images/ie-big.jpg" alt="5 slide">  
+
+                  <div class="container">
+                      <div class="carousel-caption">
+                          <h1>IE</h1>
+
+                          <p>Internet Explorer，简称 IE，是微软公司推出的一款网页浏览器。</p>
+
+                          <p>
+                              <a class="btn btn-lg btn-primary" href="http://ie.microsoft.com/" target="_blank"
+                          role="button">点我下载</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <a class="left carousel-control" href="#ad-carousel" data-slide="prev">
+              <span
+            class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#ad-carousel" data-slide="next">
+              <span
+            class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+      </div>
+
+      <!-- 主要内容 -->  
+      <div class="container summary">
+
+          <!-- 简介 -->  
+          <div class="row" id="summary-container">
+              <div class="col-md-4">
+                  <img class="img-circle" src="images/chrome-logo-small.jpg" alt="chrome">  
+
+                  <h2>Chrome</h2>
+
+                  <p>Google Chrome，又称Google浏览器，是一个由Google（谷歌）公司开发的网页浏览器。</p>
+
+                  <p>
+                      <a class="btn btn-default" href="#" role="button">点我下载</a>
+                  </p>
+              </div>
+              <div class="col-md-4">
+                  <img class="img-circle" src="images/firefox-logo-small.jpg" alt="firefox">  
+
+                  <h2>Firefox</h2>
+
+                  <p>Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器。</p>
+
+                  <p>
+                      <a class="btn btn-default" href="#" role="button">点我下载</a>
+                  </p>
+              </div>
+              <div class="col-md-4">
+                  <img class="img-circle" src="images/safari-logo-small.jpg" alt="safari">  
+
+                  <h2>Safari</h2>
+
+                  <p>Safari，是苹果计算机的最新操作系统Mac OS X中的浏览器。</p>
+
+                  <p>
+                      <a class="btn btn-default" href="#" role="button">点我下载</a>
+                  </p>
+              </div>
+          </div>
+
+          <!-- 特性 -->  
+          <hr class="feature-divider">  
+
+          <ul class="nav nav-tabs" role="tablist" id="feature-tab">
+              <li class="active">
+                  <a href="#tab-chrome" role="tab" data-toggle="tab">Chrome</a>
+              </li>
+              <li>
+                  <a href="#tab-firefox" role="tab" data-toggle="tab">Firefox</a>
+              </li>
+              <li>
+                  <a href="#tab-safari" role="tab" data-toggle="tab">Safari</a>
+              </li>
+              <li>
+                  <a href="#tab-opera" role="tab" data-toggle="tab">Opera</a>
+              </li>
+              <li>
+                  <a href="#tab-ie" role="tab" data-toggle="tab">IE</a>
+              </li>
+          </ul>
+
+          <div class="tab-content">
+              <div class="tab-pane active" id="tab-chrome">
+                  <div class="row feature">
+                      <div class="col-md-7">
+
+                          <h2 class="feature-heading">
+                              Google Chrome
+                              <span
+                            class="text-muted">使用最广的浏览器</span>
+                          </h2>
+
+                          <p class="lead">
+                              Google Chrome，又称Google浏览器，是一个由Google（谷歌）公司开发的网页浏览器。
+                        该浏览器是基于其他开源软件所撰写，包括WebKit，目标是提升稳定性、速度和安全性，并创造出简单且有效率的使用者界面。
+                          </p>
+                      </div>
+                      <div class="col-md-5">
+                          <img class="feature-image img-responsive" src="images/chrome-logo.jpg"
+                         alt="Chrome"></div>
+                  </div>
+              </div>
+              <div class="tab-pane" id="tab-firefox">
+                  <div class="row feature">
+                      <div class="col-md-5">
+                          <img class="feature-image img-responsive" src="images/firefox-logo.jpg"
+                         alt="Firefox"></div>
+                      <div class="col-md-7">
+
+                          <h2 class="feature-heading">
+                              Mozilla Firefox
+                              <span class="text-muted">美丽的狐狸</span>
+                          </h2>
+
+                          <p class="lead">
+                              Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器，
+                        使用Gecko引擎（非ie内核），支持多种操作系统如Windows、Mac和linux。
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <div class="tab-pane" id="tab-safari">
+                  <div class="row feature">
+                      <div class="col-md-7">
+
+                          <h2 class="feature-heading">
+                              Safari
+                              <span class="text-muted">Mac用户首选</span>
+                          </h2>
+
+                          <p class="lead">
+                              Safari，是苹果计算机的最新操作系统Mac OS X中的浏览器，使用了KDE的KHTML作为浏览器的运算核心。
+                        Safari在2003年1月7日首度发行测试版，并成为Mac OS X v10.3与之后的默认浏览器，也是iPhone与IPAD和iPod touch的指定浏览器。
+                          </p>
+                      </div>
+                      <div class="col-md-5">
+                          <img class="feature-image img-responsive" src="images/safari-logo.jpg"
+                         alt="Safari"></div>
+                  </div>
+              </div>
+              <div class="tab-pane" id="tab-opera">
+                  <div class="row feature">
+                      <div class="col-md-5">
+                          <img class="feature-image img-responsive" src="images/opera-logo.jpg"
+                         alt="Opera"></div>
+                      <div class="col-md-7">
+
+                          <h2 class="feature-heading">
+                              Opera
+                              <span class="text-muted">小众但易用</span>
+                          </h2>
+
+                          <p class="lead">
+                              Opera浏览器，是一款挪威Opera Software ASA公司制作的支持多页面标签式浏览的网络浏览器。
+                        是跨平台浏览器可以在Windows、Mac和Linux三个操作系统平台上运行。.
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <div class="tab-pane" id="tab-ie">
+                  <div class="row feature">
+                      <div class="col-md-7">
+
+                          <h2 class="feature-heading">
+                              IE
+                              <span class="text-muted">你懂的</span>
+                          </h2>
+
+                          <p class="lead">
+                              Internet Explorer，原称Microsoft Internet Explorer(6版本以前)和Windows Internet
+                        Explorer(7，8，9，10版本)，
+                        简称IE，是美国微软公司推出的一款网页浏览器。它采用的排版引擎(俗称内核)为Trident。
+                          </p>
+                      </div>
+                      <div class="col-md-5">
+                          <img class="feature-image img-responsive" src="images/ie-logo.jpg"
+                         alt="IE"></div>
+                  </div>
+              </div>
+          </div>
+
+
+
+
+<!--忘记密码-->
+  <div class="modal fade bs-example-modal-sm" id="forget" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                              <button type="button" id="forgetclose" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="tab-content">
+      <div id="error21" class="alert alert-danger alert-dismissable" role="alert">
+                        <button class="close" type="button" data-dismiss="alert">&times;</button>
+    两次输入密码不一致
+            </div>
+    <div id="error22" class="alert alert-danger alert-dismissable" role="alert">
+                        <button class="close" type="button" data-dismiss="alert">&times;</button>
+    密码应大于6位且小于20位
+            </div>
+    <div id="error23" class="alert alert-danger alert-dismissable" role="alert">
+                        <button class="close" type="button" data-dismiss="alert">&times;</button>
+    信息不全
+            </div>
+    <div id="error24" class="alert alert-danger alert-dismissable" role="alert">
+            <button class="close" type="button" data-dismiss="alert">&times;</button>
+    验证码错误
+            </div>
+                <div id="error25" class="alert alert-danger alert-dismissable" role="alert">
+            <button class="close" type="button" data-dismiss="alert">&times;</button>
+    请输入正确手机号
+            </div>
+<from>
+  <div id="clforgetnumber" class="form-group">
+    <label for="exampleInputEmail1">手机号</label>
+    <input type="text" class="form-control" id="forgetnumber" placeholder="手机号"></div>
+<div id="clforgetpas" class="form-group">
+    <label for="">新密码</label>
+    <input type="password" class="form-control checkjs" id="forgetpas" placeholder="新密码">
+</div>
+<div id="clforgetrepas" class="form-group">
+    <label for="">确认新密码</label>
+    <input type="password" class="form-control checkjs" id="forgetrepas" placeholder="确认密码">
+</div>
+<div id="clauth5" class="form-group">
+            <input name="formessage" id="formessage" type="text" class="form-control" >
+            <input type="submit" id="formessagebutton" class="btn btn-primary pull-right" value="获取验证码" />
+            </br>
+            </br>
+    </div>
+    </br>
+                    </from>
+      </div>
+      <div id="clforget" class="modal-footer">
+        <button id="forgetsubmit" type="button" class="btn btn-primary">确定</button>
+      </div>
+    <!--/div-->
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+          <!-- 修改密码 -->  
+          <div class="modal fade bs-example-modal-sm" id="changed" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+         aria-hidden="true">
+              <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                      <div class="modal-body">
+                          <button type="button" id="changeclose" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                          <div class="tab-content">
+
+                              <div class="tab-pane active">
+                                  <div id="error16" class="alert alert-danger alert-dismissable" role="alert">
+                                      <button class="close" type="button" data-dismiss="alert">&times;</button>
+                                      旧密码有误
+                                  </div>
+                                  <div id="error17" class="alert alert-danger alert-dismissable" role="alert">
+                                      <button class="close" type="button" data-dismiss="alert">&times;</button>
+                                      两次输入密码不一致
+                                  </div>
+                                  <div id="error18" class="alert alert-danger alert-dismissable" role="alert">
+                                      <button class="close" type="button" data-dismiss="alert">&times;</button>
+                                      验证码错误
+                                  </div>
+                                  <div id="error19" class="alert alert-danger alert-dismissable" role="alert">
+                                      <button class="close" type="button" data-dismiss="alert">&times;</button>
+                                      密码应大于6位且小于20位
+                                  </div>
+                                  <div id="error20" class="alert alert-danger alert-dismissable" role="alert">
+                                      <button class="close" type="button" data-dismiss="alert">&times;</button>
+                                      密码应大于6位且小于20位
+                                  </div>
+                                  <from>
+                                      <div id="clchangepas" class="form-group">
+                                          <label for="">旧密码</label>
+                                          <input type="password" class="form-control checkjs" id="changepas" placeholder="密码"></div>
+                                      <div id="clchangenewpas" class="form-group">
+                                          <label for="">新密码</label>
+                                          <input type="password" class="form-control checkjs" id="changenewpas" placeholder="新密码"></div>
+                                      <div id="clchangerepas" class="form-group">
+                                          <label for="">确认新密码</label>
+                                          <input type="password" class="form-control checkjs" id="changerepas" placeholder="确认密码"></div>
+                                      <div id="clauth4" class="form-group">
+                                          <input name="authcode4" id="authcode4" type="text" class="form-control" >  
+                                          <img id="captcha_img3" src="#" alt="验证码" />  
+                                          <br>  
+                                          <a href="javascript:;" role="div" id="change3" onclick="chang3()">换一个</a>
+                                      </div>
+                                  </br>
+                              </from>
+
+                          </div>
+                          <div id="clchanged" class="modal-footer">
+                              <button id="changedsubmit" type="button" class="btn btn-primary">保存修改</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- 修改密码 -->  
+
+  <!-- 登录和注册 -->  
+  <div class="modal fade bs-example-modal-sm" id="logorsign" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+              <div class="modal-body">
+                  <button type="button" id="logclose" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  <div class="tab-content">
+
+                      <ul class="nav nav-tabs">
+                          <li class="active">
+                              <a id="login" href="#tab-login" role="tab" data-toggle="tab">登录</a>
+                          </li>
+                          <li >
+                              <a id="signup" href="#tab-signup" role="tab" data-toggle="tab">注册</a>
+                          </li>
+                      </ul>
+                      <div class="tab-pane active" id="tab-login">
+                          <div id="error1" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              您输入的账号不存在
+                          </div>
+                          <div id="error2" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              您输入的账号或密码有误
+                          </div>
+                          <div id="error3" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              请输入正确验证码
+                          </div>
+                          <div id="error4" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              请输入账号
+                          </div>
+                          <div id="error5" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              请输入密码
+                          </div>
+                          <form>
+                              <div id="cllognum" class="form-group">
+                                  <label for="exampleInputEmail1">账号</label>
+                                  <input type="text" class="form-control" id="lognumber" placeholder="手机号/昵称"></div>
+                              <div id="cllogpas" class="form-group">
+                                  <label for="exampleInputPassword1">密码</label>
+                                  <input type="password" class="form-control" id="logpassword" placeholder="密码"></div>
+                              <div id="clauth" class="form-group">
+                                  <input name="authcode" id="authcode" type="text" class="form-control" >  
+                                  <img id="captcha_img" src="#" alt="验证码" />  
+                                  <br>  
+                                  <a href="javascript:;" role="div" id="change" onclick="chang()">换一个</a>
+                              </div>
+
+                              <div class="checkbox">
+                                  <label class="">
+                                      <input type="checkbox" id="usecookie"class="">记住我</label>
+                              </div>
+                              <a href="#" id="forgetpass" data-toggle="modal" data-target="#forget">忘记密码</a>
+                          </form>
+                          <button type="submit" id="loginsubmit" class="btn btn-primary pull-right">登录</button>
+                      </div>
+                      <div class="tab-pane active" id="tab-signup" >
+                          <div id="error6" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              两次输入密码不一致
+                          </div>
+                          <div id="error7" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              请输入正确的手机号
+                          </div>
+                          <div id="error8" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              手机验证码错误
+                          </div>
+                          <div id="error9" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              请输入正确验证码
+                          </div>
+                          <div id="error10" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              密码必须大于6位且小于20位
+                          </div>
+                          <div id="error11" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              请输入昵称
+                          </div>
+                          <div id="error12" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              手机验证码错误
+                          </div>
+                          <div id="error13" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              填写信息不全！
+                          </div>
+                          <div id="error14" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              该手机号已注册！
+                          </div>
+                          <div id="error15" class="alert alert-danger alert-dismissable" role="alert">
+                              <button class="close" type="button" data-dismiss="alert">&times;</button>
+                              该昵称已注册！
+                          </div>
+                          <!--div class="row feature"-->  
+
+                          <!--div class="col-md-5"-->  
+                          <from>
+                              <div id="clsignphone" class="form-group">
+                                  <label for="">手机号</label>
+                                  <input type="text" class="form-control" id="signphone" placeholder="手机号"></div>
+                              <div id="clsignname" class="form-group">
+                                  <label for="">昵称</label>
+                                  <input type="text" class="form-control" id="signname" placeholder="昵称"></div>
+                              <div id="clsignpas" class="form-group">
+                                  <label for="">密码</label>
+                                  <input type="password" class="form-control checkjs" id="signpas" placeholder="密码"></div>
+                              <div id="clresignpas" class="form-group">
+                                  <label for="">确认密码</label>
+                                  <input type="password" class="form-control checkjs" id="resignpas" placeholder="确认密码"></div>
+                              <div id="clauth2" class="form-group">
+                                  <input name="authcode2" id="authcode2" type="text" class="form-control" >  
+                                  <img id="captcha_img2" src="#" alt="验证码" />  
+                                  <br>  
+                                  <a href="javascript:;" role="div" id="change2" onclick="chang2()">换一个</a>
+                              </div>
+                          </br>
+                          <div id="clauth3" class="form-group">
+                              <input name="message" id="message" type="text" class="form-control" >  
+                              <input type="submit" id="messagebutton" class="btn btn-primary pull-right" value="获取验证码" />  
+                          </br>
+                      </br>
+                  </div>
+              </from>
+
+              <button type="submit" id="signsubmit" class="btn btn-primary pull-right">注册</button>
+              <!--/div-->  
+              <!--/div--> </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  <button type="button" class="btn btn-primary">Save changes</button-->
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <footer>
+  <p class="pull-right">
+  <a href="#top">回到顶部</a>
+  </p>
+
+  <p>&copy; 2014 慕课网</p>
+  </footer>
+
+  <button id="testtest">hello</button>
+
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
+  <script>
+ var anElement = document.getElementById("captcha_img");
+     anElement.src = 'captcha.php?r=' + Math.random();//验证码
+      var anElement2 = document.getElementById("captcha_img2");
+     anElement2.src = 'captcha.php?r=' + Math.random();//验证码
+      var anElement3 = document.getElementById("captcha_img3");
+     anElement3.src = 'captcha.php?r=' + Math.random();//验证码
+
+    function settime(val){
+        if(countdown == 0){
+        val.removeAttribute("disabled");
+        val.value="获取验证码";
+        }else{
+        val.setAttribute("disabled", true);
+        val.value="重新发送(" + countdown + ")";
+        countdown--;
+    }
+        setTimeout(function(){settime(val)},1000) ;
+    }
+$(function () {
+    $("#messagebutton").removeAttr("disabled");
+    $("#formessagebutton").removeAttr("disabled");
+    $('#ad-carousel').carousel();
+    $('#menu-nav .navbar-collapse a').click(function (e) {
+        var href = $(this).attr('href');
+        var tabId = $(this).attr('data-tab');
+        if ('#' !== href) {
+           e.preventDefault();
+            $(document).scrollTop($(href).offset().top - 70);
+            if (tabId) {
+                $('#feature-tab a[href=#' + tabId + ']').tab('show');
+            }
+        }
+    });
+    $('#tab-signup').modal('hide ');
+});
+
+
+ //alert($.cookie("NAME"));
+  if($.cookie("NAME")){
+        $("#logheader").html($.cookie("NAME"));                        
+        $("#logheader").removeAttr("data-target");
+        $("#logheader").attr("data-toggle","dropdown");
+        var NAME = $.cookie("NAME");
+        $.cookie('NAME',NAME,{ expires: 30});
+
+  }//判断是否自动登录
+  if($.cookie("NEWNAME")){
+        $("#logheader").html($.cookie("NEWNAME"));                        
+        $("#logheader").removeAttr("data-target");
+        $("#logheader").attr("data-toggle","dropdown");
+        if($.cookie("NEW")){
+            $("#signsure").show().fadeOut(3000);
+            $.cookie("NEW","");
+        }
+
+  }
+  if($.cookie("CHANGE")){
+    $("#changesure").show().fadeOut(3000);
+    $.cookie("CHANGE","");
+  }
+ $("#logout").click(function(){
+     $.cookie("NAME","");
+     $.cookie("NEWNAME","");
+     location.reload(); 
+ });//退出登录
+if($.cookie("FORGET")){
+    $("#forgetsure").show().fadeOut(3000);
+    $.cookie("FORGET","");
+}
+function chang(){
+    var cap = document.getElementById("captcha_img");
+    cap.src = 'captcha.php?r=' + Math.random();
+    }//验证码
+function chang2(){
+    var cap = document.getElementById("captcha_img2");
+    cap.src = 'captcha.php?r=' + Math.random();
+    }//验证码
+    function chang3(){
+    var cap = document.getElementById("captcha_img3");
+    cap.src = 'captcha.php?r=' + Math.random();
+    }//验证码
+    $("#signup").click(function(){
+        $("#tab-signup").show();
+    });
+    $("#login").click(function(){
+        $("#tab-signup").hide();
+    })
+//以下是登录表单提交与验证
+$("#loginsubmit").click(function(){
+    if(document.getElementById('lognumber').value&&document.getElementById('logpassword').value&&document.getElementById('authcode').value){
+        $.post("login.php",{
+            lognumber:document.getElementById('lognumber').value,
+            logpassword:document.getElementById('logpassword').value,
+            authcode:document.getElementById('authcode').value,
+        },
+        function(data){
+            if(data == "authcode0"){
+                chang();
+                $("#error3").show();
+                $("#clauth").addClass("has-error");
+            }else if(data == "logerror"){
+                       $("#error2").show();
+            }else{
+                    $("#logclose").click();
+                    $("#logheader").html(data);                        
+                    $("#logheader").removeAttr("data-target");
+                    $("#logheader").attr("data-toggle","dropdown");
+                    if(document.getElementById('usecookie').checked){
+                        $.cookie("NAME",data,{expires: 30});
+                    }else{
+                        $.cookie("NAME",data);
+                    }
+                }
+        });
+    }else{ 
+            if(!document.getElementById('lognumber').value){
+                $("#error4").show();
+                $("#cllognum").addClass("has-error");
+                 }else if(!document.getElementById('logpassword').value){
+                        $("#error5").show();
+                        $("#cllogpas").addClass("has-error");
+            }else if(!document.getElementById('authcode').value){
+                        $("#error3").show();
+                        $("#clauth").addClass("has-error");
+            }
+        }
+});
+//判断注册手机号
+var phonecheck = null;
+$("#signphone").blur(function(){
+    var phone = /^13[0-9]{9}$|^15[0-9]{9}$|^17[0-9]{9}|^18[0-9]{9}$/;
+    var phone = new RegExp(phone);
+    if(!phone.test(document.getElementById('signphone').value)){
+        $("#error7").show();
+        $("#clsignphone").addClass("has-error");
+    }else{
+        phonecheck = true;
+    }
+});
+$("#messagebutton").click(function(){
+        if(document.getElementById('signname').value==''||document.getElementById('signpas').value==''||document.getElementById('resignpas').value==''||document.getElementById('signname').value==''){
+            $("#error13").show();
+        }else{
+        $.post("sign.php",{
+                authcode2:document.getElementById('authcode2').value,
+                submit:"f",
+            },
+            function(data){
+                if(data == "T"){
+                    if(phonecheck){
+                        var countdown = 60;
+                        settime(document.getElementById("messagebutton"));
+                        message(document.getElementById("signphone").value);
+                        phonecheck == null;
+                    }else{
+                        $("#error7").show();
+                        $("#clsignphone").addClass("has-error");
+                    }
+                }else{
+                    chang2();
+                    $("#error9").show();
+                    $("#clauth2").addClass("has-error");
+                }
+            }
+        );
+}
+});
+$("#changedsubmit").blur(function(){
+    $("#error20").hide();
+});
+$("#changepas").blur(function(){
+    $.post("updatepass.php",{
+        pas:document.getElementById("changepas").value,
+        oldpas:"1",        
+    },
+    function(data){
+        if(data == "pas0"){
+            $("#error16").show();
+            $("#changepas").addClass("has-error");
+        }
+    });
+});
+$("#changerepas").blur(function(){
+    if(document.getElementById("changenewpas").value!=document.getElementById("changerepas").value){
+        $("#error17").show();
+        $("#clchangerepas").addClass("has-error");
+    }
+    if(document.getElementById("changenewpas").value.length<6||document.getElementById("changenewpas").value.length>20){
+        $("#error19").show();
+        $("#clchangerepas").addClass("has-error");
+    }
+});
+$("#changedsubmit").click(function(){
+ if(document.getElementById("changepas").value==""||document.getElementById("changenewpas").value==""||document.getElementById("changerepas").value==""){
+            $("#error20").show();
+ }else{
+            $.post("updatepass.php",{
+                authcode4:document.getElementById('authcode4').value,
+                newpas:document.getElementById('changerepas').value,
+                oldpas:"0",
+            },
+            function(data){
+                if(data == "authcodenull"){
+                $("#error18").show();
+                $('#clauth4').addClass("has-error");
+                }else if(data == "1"){
+                    $.cookie("CHANGE","1");
+                    $.cookie("NAME","");
+                    location.reload();
+                }else if(data == "error"){
+                    alert("更改失败！");
+                }
+            }
+        );
+ }
+});
+$("#forgetpass").click(function(){
+    $("#logclose").click();
+});
+$("#logorsign").blur(function(){
+    $("#error1").hide();
+    $("#error2").hide();
+    $("#error3").hide();
+    $("#error4").hide();
+    $("#error5").hide();
+    $("#error6").hide();
+    $("#error7").hide();
+    $("#error8").hide();
+    $("#error9").hide();
+    $("#error10").hide();
+    $("#error11").hide();
+    $("#error12").hide();
+    $("#error13").hide();
+    $("#error14").hide();
+    $("#error15").hide();
+    $("#cllognum").removeClass("has-error");
+    $("#cllogpas").removeClass("has-error");
+    $("#clauth").removeClass("has-error");
+    $("#clsignphone").removeClass("has-error");
+    $("#clsignpas").removeClass("has-error");
+    $("#clresignpas").removeClass("has-error");
+    $("#clauth2").removeClass("has-error");
+    $("#clauth3").removeClass("has-error");
+    $("#clsignname").removeClass("has-error");
+});
+$("#cllognum").click(function(){
+    $("#error1").hide();
+    $("#error2").hide();
+    $("#error4").hide();
+    $("#cllognum").removeClass("has-error");
+});
+$("#cllogpas").click(function(){
+    $("#cllogpas").removeClass("has-error");
+});
+$("#clauth").click(function(){
+    $("#error3").hide();
+    $("#clauth").removeClass("has-error");
+});
+$("#clsignphone").click(function(){
+    $("#error7").hide();
+    $("#error14").hide();
+    $("#clsignphone").removeClass("has-error");
+});
+$("#clsignpas").click(function(){
+    $("#error6").hide();
+    $("#clsignpas").removeClass("has-error");
+    $("#clresignpas").removeClass("has-error");
+});
+$("#clresignpas").click(function(){
+    $("#error6").hide();
+    $("#clsignpas").removeClass("has-error");
+    $("#clresignpas").removeClass("has-error");
+});
+$("#clauth2").click(function(){
+    $("#error9").hide();
+    $("#clauth2").removeClass("has-error");
+});
+$("#clauth3").click(function(){
+    $("#error8").hide();
+    $("#clauth3").removeClass("has-error");
+});
+$("#clsignname").click(function(){
+    $("#error11").hide();
+    $("#error15").hide();
+    $("#clsignname").removeClass("has-error");
+});
+$("#messagebutton").blur(function(){
+    $("#error13").hide();
+});
+$("#changed").blur(function(){
+    $("#error16").hide();
+    $("#error17").hide();
+    $("#error18").hide();
+    $("#error19").hide();
+    $("#clchangepas").removeClass("has-error");
+    $("#clchangenewpas").removeClass("has-error");
+    $("#clchangerepas").removeClass("has-error");
+    $("#clauth4").removeClass("has-error");
+});
+$("#clchangepas").click(function(){
+    $("#error16").hide();
+    $("#error17").hide();
+    $("#error18").hide();
+    $("#clchangepas").removeClass("has-error");
+    $("#clchangerepas").removeClass("has-error");
+});
+$("#clauth4").click(function(){
+    $("#error19").hide();
+    $("#clauth4").removeClass("has-error");
+});
+$("#clchangerepas").click(function(){
+    $("#error16").hide();
+    $("#error17").hide();
+    $("#error18").hide();
+    $("#clchangepas").removeClass("has-error");
+    $("#clchangerepas").removeClass("has-error");
+});
+//$("#resignpas").blur(function(){
+//    if(document.getElementById("signpas").value!=document.getElementById("resignpas").value){
+//            $("#error6").show();
+//            $("#clresignpas").addClass("has-error");
+//}
+//});
+$("#resignpas").blur(function(){
+        if(document.getElementById("signpas").value!=document.getElementById("resignpas").value){
+            $("#error6").show();
+            $("#clresignpas").addClass("has-error");
+        }
+        else if(document.getElementById("signpas").value.length<6||document.getElementById("signpas").value.length>20){
+        $("#error10").show();
+        $("#clsignpas").addClass("has-error");
+    }
+});
+$("#clresignpas").focus(function(){
+    $("#error6").hide();
+    $("#error10").hide();
+    $("#clresignpas").removeClass("has-error");
+    $("#clsignpas").removeClass("has-error");
+});
+$("#clsignpas").focus(function(){
+    $("#error6").hide();
+    $("#error10").hide();
+    $("#clresignpas").removeClass("has-error");
+    $("#clsignpas").removeClass("has-error");
+});
+$("#signname").blur(function(){
+    if(document.getElementById('signname').value.length<1){
+        $("#error11").show();
+        $("#clsignname").addClass("has-error");
+    }
+});
+//发送手机验证码
+var messagecheck =null;
+function message(number){
+    $.post("message.php",{
+                number:number,
+            },function(data){
+               messagecheck = data;
+            }
+    );
+}
+$("#forgetnumber").blur(function(){
+    var phone2 = /^13[0-9]{9}$|^15[0-9]{9}$|^17[0-9]{9}|^18[0-9]{9}$/;
+    var phone2 = new RegExp(phone2);
+    if(!phone2.test(document.getElementById('forgetnumber').value)){
+        $("#error25").show();
+        $("#clforgetnumber").addClass("has-error");
+    }else{
+        phonecheck = true;
+    }
+});
+//忘了密码
+$("#forgetrepas").blur(function(){
+    if(document.getElementById("forgetrepas").value!=document.getElementById("forgetpas").value){
+        $("#error21").show();
+        $("#clforgetrepas").addClass("has-error");
+    }else if(document.getElementById("forgetrepas").value.length<6||document.getElementById("forgetrepas").value.length>20){
+        $("#error22").show();
+        $("#clforgetrepas").addClass("has-error");
+    }
+});
+$("#formessagebutton").click(function(){
+    if(document.getElementById("forgetrepas").value==""||document.getElementById("forgetpas").value==""||document.getElementById("forgetnumber").value==""){
+        $("#error23").show();
+    }else{
+        if(phonecheck){
+            countdown = 60;
+            settime(document.getElementById("formessagebutton"));
+            message(document.getElementById("forgetnumber").value);
+        }else{
+            $("#error25").show();
+            $("#clforgetnumber").addClass("has-error");
+        }
+    }
+//对验证码的验证，对比;确定按钮的脚本
+});
+$("#forgetsubmit").click(function(){
+    if(document.getElementById('formessage').value==messagecheck){
+        $.post("forget.php",{
+            phone:document.getElementById('forgetnumber').value,
+            password:document.getElementById('forgetrepas').value,
+        },function(data){
+            if(data=="0"){
+                alert("修改未生效！");
+            }else if(data=="1"){
+                location.reload();
+                $.cookie("FORGET","1");
+            }else if(data=="none"){
+                alert("此手机号未注册！");
+            }
+        messagecheck = null;
+        phonecheck = null;
+    })
+
+    }else{
+        $("#error23").show();
+    }
+});
+/*$("#signsubmit").click(function(){
+    if(document.getElementById('message').value==messagecheck){
+        $.post("sign.php",{
+            number:document.getElementById('signphone').value,
+            name:document.getElementById('signname').value,
+            password:document.getElementById('resignpas').value,
+            submit:"1"
+        },function(data){
+            if(data == "rename"){
+                $("#error15").show();
+                $("#clsignname").addClass("has-error");
+            }else
+            if(data == "renumber"){
+                $("#error14").show();
+                $("#clsignphone").removeClass("has-error");
+            }else{
+                $.cookie("NEWNAME",data);
+                $.cookie("NAME",data);
+                //$("#logclose").click();
+                $.cookie("NEW","1");
+                messagecheck == null;
+                location.reload();
+            }
+        });
+    }else{
+        $("#error12").show();
+        $("#message").addClass("has-error");
+    }
+});*/
+$("#forgetrepas").click(function(){
+    $("#error21").hide();
+    $("#error22").hide();
+    $("#error23").hide();
+    $("#clforgetpas").removeClass("has-error");
+    $("#clforgetrepas").removeClass("has-error");
+});
+$("#forget").blur(function(){
+    $("#error21").hide();
+    $("#error22").hide();
+    $("#error23").hide();
+    $("#error24").hide();
+    $("#error25").hide();
+    $("#clforgetnumber").removeClass("has-error");
+    $("#clforgetpas").removeClass("has-error");
+    $("#clforgetrepas").removeClass("has-error");
+    $("#clauth5").removeClass("has-error");
+});
+$("#forgetnumber").click(function(){
+    $("#error25").hide();
+    $("#clforgetnumber").removeClass("has-error");
+});
+
+$("#signsubmit").click(function(){
+    if(document.getElementById('message').value==messagecheck){
+        $.post("sign.php",{
+            number:document.getElementById('signphone').value,
+            name:document.getElementById('signname').value,
+            password:document.getElementById('resignpas').value,
+            submit:"1"
+        },function(data){
+            if(data == "rename"){
+                $("#error15").show();
+                $("#clsignname").addClass("has-error");
+            }else
+            if(data == "renumber"){
+                $("#error14").show();
+                $("#clsignphone").removeClass("has-error");
+            }else{
+                $.cookie("NEWNAME",data);
+                $.cookie("NAME",data);
+                //$("#logclose").click();
+                $.cookie("NEW","1");
+                messagecheck == null;
+                location.reload();
+            }
+        });
+    }else{
+        $("#error12").show();
+        $("#message").addClass("has-error");
+    }
+});
+/*$("#signend").blur(function(){
+    location.reload();
+});
+$("#signsure").click(function(){
+    location.reload();
+});*/
+</script></body>
+  </html>
